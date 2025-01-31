@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,32 @@
     <script type="module" src="script_login.js"></script>
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
-    <div class="login-container">
-        <h2 class="tituloLista">My Account</h2>
-        <form action="/Frontend/Citas/citas.html" method="post">
-            <label for="User">User</label>
-            <input type="text" id="usuario" name="user" placeholder="Login" required>
+    <header>
+        <div class="logo">
+            <img src="https://dynamic.brandcrowd.com/asset/logo/daed4ce7-84c5-43ea-809b-46bb035b7a5c/logo-search-grid-1x?logoTemplateVersion=4&v=638368790663100000&text=veterinary" alt="Logo Veterinaria" class="logo-img">
+        </div>
+    </header>
 
-            <label for="password">Password</label>                                                          
-            <input type="password" id="contraseña" name="password" placeholder="Password" required>
+    <main>
+        <div class="login-container">
+            <h2 class="tituloLista">My Account</h2>
+            <form action="/Frontend/Citas/citas.html" method="post">
+                <label for="User">User</label>
+                <input type="text" id="usuario" name="user" placeholder="Login" required>
 
-            <button type="submit">Sing in</button>
-        </form>
-    </div>
+                <label for="password">Password</label>
+                <input type="password" id="contraseña" name="password" placeholder="Password" required>
+
+                <button type="submit">Sign in</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Clínica Veterinaria - Todos los derechos reservados</p>
+    </footer>
 </body>
+
 </html>

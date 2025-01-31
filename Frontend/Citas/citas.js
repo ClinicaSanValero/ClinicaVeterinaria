@@ -36,14 +36,15 @@ window.leerCitas = function () {
                 fila.append(celdaFecha, celdaHora, celdaMascota, celdaAcciones);
                 tablaCitas.appendChild(fila);
             });
-        });
+        })
+        .catch(() => notifyError('Error loading appointments'));
 };
 
 window.eliminarCita = function (id) {
     if (confirm('Are you sure you want to delete this appointment?')) {
-        axios.delete(`http://localhost:8080/citas/:id`)
+        axios.delete(`http://localhost:8080/citas/${id}`)
             .then((response) => {
-                if (response.status === 204) {
+                if (response.status === 200) {
                     notifyOk('Appointment successfully deleted');
                     el('cita-' + id).remove();
                 }
@@ -53,7 +54,7 @@ window.eliminarCita = function (id) {
 };
 
 window.actualizarFormularioCita = function (id) {
-    axios.get(`http://localhost:8080/citas/:id`).then((response) => {
+    axios.get(`http://localhost:8080/citas/${id}`).then((response) => {
         const cita = response.data;
         const contenedorFormulario = el('edit-appointment-container') || document.createElement('div');
         contenedorFormulario.id = 'edit-appointment-container';

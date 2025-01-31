@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { el, notifyOk, notifyError } from './documentsUtil';
 
-// Cargar y mostrar mascotas
 window.loadMascotas = function () {
     axios.get('http://localhost:8080/mascotas')
         .then(response => {
@@ -26,11 +25,11 @@ window.loadMascotas = function () {
                 mascotaTable.appendChild(row);
             });
             
-            loadAppointments(); // Actualizar citas cuando se actualizan mascotas
-        });
+            loadAppointments();
+        })
+        .catch(error => notifyError('Error loading pets'));
 };
 
-// Cargar y mostrar citas
 window.loadAppointments = function () {
     axios.get('http://localhost:8080/citas')
         .then(response => {
@@ -54,23 +53,22 @@ window.loadAppointments = function () {
                 `;
                 appointmentTable.appendChild(row);
             });
-        });
+        })
+        .catch(error => notifyError('Error loading appointments'));
 };
 
-// Eliminar una mascota y actualizar citas relacionadas
 window.deleteMascota = function (id) {
     if (confirm('Are you sure you want to delete this pet?')) {
         axios.delete(`http://localhost:8080/mascotas/${id}`)
             .then(() => {
                 notifyOk('Pet deleted');
                 el(`mascota-${id}`).remove();
-                loadAppointments(); // Actualizar citas porque están relacionadas con mascotas
+                loadAppointments();
             })
             .catch(error => notifyError('Error deleting pet'));
     }
 };
 
-// Eliminar una cita
 window.deleteAppointment = function (id) {
     if (confirm('Are you sure you want to delete this appointment?')) {
         axios.delete(`http://localhost:8080/citas/${id}`)
@@ -82,7 +80,6 @@ window.deleteAppointment = function (id) {
     }
 };
 
-// Inicializar carga de datos
 window.onload = function () {
     loadMascotas();
     loadAppointments();

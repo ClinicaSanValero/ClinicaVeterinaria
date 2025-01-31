@@ -38,8 +38,8 @@ app.get('/mascotas/:id', async (req, res) => { // Operacion para ver una mascota
 
 
 app.post('/mascotas', [
-    check('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    check('propietario').notEmpty().withMessage('El nombre del propietario es obligatorio') 
+    check('nombre').notEmpty().withMessage('The name is a mandatory field'),
+    check('propietario').notEmpty().withMessage('The owner is a mandatory field') 
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -55,16 +55,16 @@ app.post('/mascotas', [
             id_propietario: req.body.id_propietario,
         });
 
-        res.status(201).json({ success: 'Mascota añadida exitosamente' });
+        res.status(201).json({ success: 'Pet registered successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Error al añadir la mascota' });
+        res.status(500).json({ error: 'Error when adding the pet' });
     }
 });
 
 
 app.put('/mascotas/:id', [
-    check('nombre').notEmpty().withMessage('El nombre es obligatorio'),
-    check('propietario').notEmpty().withMessage('El nombre del propietario es obligatorio') 
+    check('nombre').notEmpty().withMessage('The name is a mandatory field'),
+    check('propietario').notEmpty().withMessage('The owner is a mandatory field') 
 ], async (req, res) => {
         try {
             const errors = validationResult(req);
@@ -81,8 +81,8 @@ app.put('/mascotas/:id', [
         res.status(200).json({});
 
     } catch (error) {
-        console.error('Error al acutalizar la mascota:', error); // Log de error en la consola
-        res.status(500).json({ error: 'Ocurrió un error al actualizar la mascota', details: error.message });
+        console.error('Error when updatng the pet:', error); // Log de error en la consola
+        res.status(500).json({ error: 'An error occurred while updating the pet', details: error.message });
     }
 });
 
@@ -91,8 +91,8 @@ app.delete('/mascotas/:id', async (req, res) => {  // Operacion para borrar una 
         await db('mascotas').where('id', req.params.id).del();
         res.status(200).json({});
     } catch (error) {
-        console.error('Error al borrar la mascota:', error); // Log de error en la consola
-        res.status(500).json({ error: 'Ocurrió un error al borrar la mascota', details: error.message });
+        console.error('Error when deleting the pet:', error); // Log de error en la consola
+        res.status(500).json({ error: 'An error ocurred while deleting the pet', details: error.message });
     }
 });
 
@@ -118,9 +118,10 @@ app.get('/citas/:id', async (req, res) => { // Operacion para ver una cita en co
 
 
 app.post('/citas', [
-    check('hora').notEmpty().withMessage('La hora es obligatoria'),
-    check('id_mascota').notEmpty().withMessage('EL nombre de la mascota es obligatoria'),
-    check('id_veterinario').notEmpty().withMessage('El nombre del veterinario es obligatorio')
+    check('hora').notEmpty().withMessage('The hour is a mandatory field'),
+    check('fecha').notEmpty().withMessage('The date is a mandatory field'),
+    check('id_mascota').notEmpty().withMessage('The name of the pet is a mandatory field'),
+    check('id_veterinario').notEmpty().withMessage('The name of the vet is a mandatory field')
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -136,16 +137,16 @@ app.post('/citas', [
             id_veterinario: req.body.id_veterinario,
         });
 
-        res.status(201).json({ success: 'Cita añadida exitosamente' });
+        res.status(201).json({ success: 'Appointment succesfully added' });
     } catch (error) {
-        res.status(500).json({ error: 'Error al añadir la cita' });
+        res.status(500).json({ error: 'Error when adding the appointment' });
     }
 });
 
 app.put('/citas/:id', [
-    check('hora').notEmpty().withMessage('La hora es obligatoria'),
-    check('id_mascota').notEmpty().withMessage('EL nombre de la mascota es obligatoria'),
-    check('id_veterinario').notEmpty().withMessage('El nombre del veterinario es obligatorio')
+    check('hora').notEmpty().withMessage('The hour is a mandatory field'),
+    check('id_mascota').notEmpty().withMessage('The name of the pet is a mandatory field'),
+    check('id_veterinario').notEmpty().withMessage('The name of the vet is a mandatory field')
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -163,8 +164,8 @@ app.put('/citas/:id', [
         res.status(200).json({});
 
     } catch (error) {
-        console.error('Error al acutalizar la cita:', error); // Log de error en la consola
-        res.status(500).json({ error: 'Ocurrió un error al actualizar la cita', details: error.message });
+        console.error('Error updating appointment:', error); // Log de error en la consola
+        res.status(500).json({ error: 'Error updating appointment', details: error.message });
     }
 });
 
@@ -173,8 +174,8 @@ app.delete('/citas/:id', async (req, res) => {  // Operacion para borrar una cit
         await db('citas').where('id', req.params.id).del();
         res.status(200).json({});
     } catch (error) {
-        console.error('Error al borrar la cita:', error); // Log de error en la consola
-        res.status(500).json({ error: 'Ocurrió un error al borrar la cita', details: error.message });
+        console.error('Error deleting the appointment', error); // Log de error en la consola
+        res.status(500).json({ error: 'Error deleting the appointment', details: error.message });
     }
 });
 
@@ -182,6 +183,25 @@ app.delete('/citas/:id', async (req, res) => {  // Operacion para borrar una cit
 //----------------------------------------------Abro un servidor en puerto 8080----------------------------------------------
 
 app.listen(8080, () => {
-    console.log('Servidor iniciado en http://localhost:8080');
+    console.log('Server running in http://localhost:8080');
 });
 
+
+//--------------------------------LOGIN----------------------------------------------
+
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await db('usuarios').select('*').from('usuarios').where('email', email).first();
+
+    if (!user) {
+        return res.status(401).json({ error: 'User not found' });
+    }
+
+    if (user.password !== password) {
+        return res.status(401).json({ error: 'Incorrect Password' });
+    }
+
+    res.json({ success: 'Succesful login' });
+});

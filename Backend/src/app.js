@@ -36,7 +36,6 @@ app.get('/mascotas/:id', async (req, res) => { // Operacion para ver una mascota
     res.json(mascotas);
 });
 
-const { check, validationResult } = require('express-validator');
 
 app.post('/mascotas', [
     check('nombre').notEmpty().withMessage('El nombre es obligatorio'),

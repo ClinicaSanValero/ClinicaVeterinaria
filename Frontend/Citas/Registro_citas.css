@@ -8,70 +8,25 @@ body {
     position: relative; /* Para posicionar las imágenes laterales */
 }
 
-/* Imágenes de huellas laterales */
-.side-images {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none; /* No interferir con la interacción de la página */
-}
-
-.paw-image {
-    width: 50px;
-    height: 50px;
-}
-
-.paw-image.left {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.paw-image.right {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-h1, h2 {
-    font-family: 'Arial', sans-serif;
-}
-
-a {
-    text-decoration: none;
-}
-
 /* Header */
 header {
     background-color: #4CAF50;
     color: white;
     padding: 20px 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     border-bottom: 4px solid #388E3C;
 }
 
 header .logo {
-    display: flex;
-    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 header .logo img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-header h2 {
-    margin: 0;
-    font-size: 1.5em;
+    width: 150px; /* Tamaño del logo */
+    height: auto; /* Mantener la proporción */
 }
 
 nav ul {
@@ -99,9 +54,40 @@ nav li a:hover {
     color: #333;
 }
 
-main {
-    padding: 20px 0;
-    text-align: center;
+/* Imágenes de huellas laterales */
+.side-images {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* No interferir con la interacción de la página */
+}
+
+.paw-image {
+    width: 450px; /* Tamaño grande */
+    height: 450px; /* Tamaño grande */
+    object-fit: cover; /* Evita la distorsión */
+    border: 10px solid #4CAF50; /* Marco verde */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra */
+    opacity: 0.7; /* Transparencia (70% visible) */
+}
+
+.paw-image.left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.paw-image.right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Sección de introducción */
@@ -216,5 +202,14 @@ footer p {
     .container {
         width: 100%;
         padding: 15px;
+    }
+
+    .paw-image {
+        width: 200px; /* Tamaño más pequeño en móviles */
+        height: 200px; /* Tamaño más pequeño en móviles */
+        border: 5px solid #4CAF50; /* Marco más delgado en móviles */
+        border-radius: 10px; /* Bordes redondeados más pequeños */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+        opacity: 0.7; /* Transparencia (70% visible) */
     }
 }

@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { el, icon, notifyOk, notifyError } from './documentsUtil.js';
 
-// Función para leer las mascotas desde el servidor
 window.leerMascotas = function () {
     axios.get('http://localhost:8080/mascotas')
         .then((response) => {
             const listaMascotas = response.data;
             const tablaMascotas = el('tableBody');
-            tablaMascotas.innerHTML = ''; // Limpiar tabla antes de agregar filas nuevas
+            tablaMascotas.innerHTML = '';
 
             listaMascotas.forEach(mascota => {
                 const fila = document.createElement('tr');
@@ -41,20 +40,19 @@ window.leerMascotas = function () {
         .catch(() => notifyError('Error loading pets'));
 };
 
-// Función para eliminar una mascota
 window.eliminarMascota = function (id) {
     if (confirm('Are you sure you want to delete this pet?')) {
         axios.delete(`http://localhost:8080/mascotas/${id}`)
             .then((response) => {
-                if (response.status === 204) {
+                if (response.status === 200) {
                     notifyOk('Pet successfully deleted');
                     el('mascota-' + id).remove();
                 }
             })
             .catch(() => notifyError('Error deleting the pet'));
+    }
 };
 
-// Función para actualizar el formulario de una mascota
 window.actualizarFormularioMascota = function (id) {
     axios.get(`http://localhost:8080/mascotas/${id}`).then((response) => {
         const mascota = response.data;
@@ -64,7 +62,6 @@ window.actualizarFormularioMascota = function (id) {
         const formulario = document.createElement('form');
         formulario.id = 'pet-form';
 
-        // Crear los campos del formulario para editar mascota
         ['nombre', 'edad', 'raza'].forEach(campo => {
             const input = document.createElement('input');
             input.id = campo;
@@ -73,7 +70,6 @@ window.actualizarFormularioMascota = function (id) {
             formulario.appendChild(input);
         });
 
-        // Crear botones de guardar y cancelar
         const botonGuardar = document.createElement('button');
         botonGuardar.textContent = 'Guardar';
         botonGuardar.onclick = () => guardarMascota(id);
@@ -83,13 +79,12 @@ window.actualizarFormularioMascota = function (id) {
         botonCancelar.onclick = cerrarFormulario;
         
         formulario.append(botonGuardar, botonCancelar);
-        contenedorFormulario.innerHTML = ''; // Limpiar contenedor
+        contenedorFormulario.innerHTML = '';
         contenedorFormulario.appendChild(formulario);
         document.body.appendChild(contenedorFormulario);
     });
 };
 
-// Función para guardar los cambios de una mascota
 window.guardarMascota = function (id) {
     const formulario = el('pet-form');
     if (!formulario.nombre.value) {
@@ -112,10 +107,9 @@ window.guardarMascota = function (id) {
         .catch(() => notifyError('Error updating the pet'));
 };
 
-// Función para cerrar el formulario de edición de mascota
 window.cerrarFormulario = function () {
     const contenedorFormulario = el('edit-pet-container');
     if (contenedorFormulario) {
         contenedorFormulario.remove();
     }
-}};
+};

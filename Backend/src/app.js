@@ -118,3 +118,71 @@ app.get('/citas/:id', async (req, res) => { // Operacion para ver una cita en co
 });
 
 
+app.post('/citas', [
+    check('hora').notEmpty().withMessage('La hora es obligatoria'),
+    check('id_mascota').notEmpty().withMessage('EL nombre de la mascota es obligatoria'),
+    check('id_veterinario').notEmpty().withMessage('El nombre del veterinario es obligatorio')
+], async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json(errors.array());
+        }
+
+        await db('citas').insert({
+            fecha: req.body.fecha,
+            hora: req.body.hora,
+            motivo: req.body.motivo,
+            id_mascota: req.body.id_mascota,
+            id_veterinario: req.body.id_veterinario,
+        });
+
+        res.status(201).json({ success: 'Cita añadida exitosamente' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al añadir la cita' });
+    }
+});
+
+app.put('/citas/:id', [
+    check('hora').notEmpty().withMessage('La hora es obligatoria'),
+    check('id_mascota').notEmpty().withMessage('EL nombre de la mascota es obligatoria'),
+    check('id_veterinario').notEmpty().withMessage('El nombre del veterinario es obligatorio')
+], async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json(errors.array());
+        }
+
+        await db('citas').where('id', req.params.id).update({
+            fecha: req.body.fecha,
+            hora: req.body.hora,
+            motivo: req.body.motivo,
+            id_mascota: req.body.id_mascota,
+            id_veterinario: req.body.id_veterinario,
+        });
+        res.status(200).json({});
+
+    } catch (error) {
+        console.error('Error al acutalizar la cita:', error); // Log de error en la consola
+        res.status(500).json({ error: 'Ocurrió un error al actualizar la cita', details: error.message });
+    }
+});
+
+app.delete('/citas/:id', async (req, res) => {  // Operacion para borrar una cita
+    try {
+        await db('citas').where('id', req.params.id).del();
+        res.status(200).json({});
+    } catch (error) {
+        console.error('Error al borrar la cita:', error); // Log de error en la consola
+        res.status(500).json({ error: 'Ocurrió un error al borrar la cita', details: error.message });
+    }
+});
+
+
+//----------------------------------------------Abro un servidor en puerto 8080----------------------------------------------
+
+app.listen(8080, () => {
+    console.log('Servidor iniciado en http://localhost:8080');
+});
+

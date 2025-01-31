@@ -1,0 +1,73 @@
+body {
+    background-color: #f4f8fb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.tituloLista {
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra de navegación */
+.barraNavegacion {
+    display: flex;
+    justify-content: flex-end; 
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    background-color: #FFCDAD;
+    border-radius: 4px;
+}
+
+.botones {
+    margin-left: 10px;
+}
+
+.linkNavegacion {
+    display: block;
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.linkNavegacion:hover {
+    background-color: #f1a636;
+    color: #333;
+}
+
+/* Tabla */
+.table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-bordered thead {
+    background-color: #FFCDAD;
+    color: #fff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}

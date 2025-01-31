@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <script type="module" src="script_login.js"></script>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="tituloLista">My Account</h2>
+        <form action="/Frontend/Citas/citas.html" method="post">
+            <label for="User">User</label>
+            <input type="text" id="usuario" name="user" placeholder="Login" required>
+
+            <label for="password">Password</label>                                                          
+            <input type="password" id="contraseña" name="password" placeholder="Password" required>
+
+            <button type="submit">Sing in</button>
+        </form>
+    </div>
+</body>
+</html>

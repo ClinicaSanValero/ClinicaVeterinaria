@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Mascotas</title>
+    <script type="module" src="registro-mascotas.js"></script>
+    <link rel="stylesheet" href="Registro_mascotas.css">
+</head>
+
+<body>
+    <ul>
+        <li><a href="index.html">Listado de Mascotas</a></li>
+        <li><a href="registro.html">Registro de Mascotas</a></li>
+        <li><a href="propietarios.html">Listado de citas</a></li>
+        <li><a href="registro-propietarios.html">Registro de Citas</a></li>
+    </ul>
+
+    <h1>Registrar una Mascota</h1>
+
+    <div class="container">
+        <form id="pet-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombreMascota" name="nombre" required>
+
+            <label for="especie">Especie:</label>
+            <input type="text" id="especieMascota" name="especie" required>
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edadMascota" name="edad" required>
+
+            <label for="propietario">Propietario:</label>
+            <input type="text" id="propietarioMascota" name="propietario" required>
+
+            <button type="button" onclick="addPet()">Guardar</button>
+            <button type="button" onclick="resetForm()">Limpiar</button>
+        </form>
+    </div>
+</body>
+
+</html>

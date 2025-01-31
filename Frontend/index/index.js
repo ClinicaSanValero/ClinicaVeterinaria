@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { el, notifyOk, notifyError } from './documentsUtil';
 
+
+const express = require('express');
+const app = express();
+
 // Cargar y mostrar mascotas
 window.loadMascotas = function () {
     axios.get('http://localhost:8080/mascotas')

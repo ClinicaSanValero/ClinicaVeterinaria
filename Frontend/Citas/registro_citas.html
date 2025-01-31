@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Citas</title>
+    <script type="module" src="registro-citas.js"></script>
+    <link rel="stylesheet" href="Registro_citas.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="veterinaria-logo.png" alt="Logo Veterinaria" class="logo-img">
+            <h2>Clínica Veterinaria</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Listado de Mascotas</a></li>
+                <li><a href="registro.html">Registro de Mascotas</a></li>
+                <li><a href="propietarios.html">Listado de Citas</a></li>
+                <li><a href="registro-propietarios.html">Registro de Citas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Registrar una Cita</h1>
+            <p>Para registrar una cita para tu mascota, completa el formulario a continuación.</p>
+        </section>
+
+        <div class="container">
+            <form id="appointment-form">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fechaCita" name="fecha" required>
+
+                <label for="motivo">Motivo:</label>
+                <input type="text" id="motivoCita" name="motivo" required>
+
+                <label for="mascota">Mascota:</label>
+                <input type="text" id="mascotaCita" name="mascota" required>
+
+                <label for="veterinario">Veterinario:</label>
+                <input type="text" id="veterinarioCita" name="veterinario" required>
+
+                <button type="button" onclick="addAppointment()">Guardar</button>
+                <button type="button" onclick="resetForm()">Limpiar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Clínica Veterinaria - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Imágenes de huellas -->
+    <div class="side-images">
+        <!-- Reemplaza las URLs con tus propias imágenes de huellas -->
+        <img src="https://img.icons8.com/ios/50/000000/paw-print.png" alt="Huella de perro" class="paw-image left">
+        <img src="https://img.icons8.com/ios/50/000000/paw-print.png" alt="Huella de gato" class="paw-image right">
+    </div>
+</body>
+
+</html>

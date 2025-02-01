@@ -33,7 +33,6 @@ const notifyOk = function(message){
 
 module.exports = {
     el,
-    icon,
     notifyError,
     notifyOk
 };

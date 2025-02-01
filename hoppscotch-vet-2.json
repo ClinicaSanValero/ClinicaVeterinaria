@@ -1,0 +1,293 @@
+[
+  {
+    "v": 6,
+    "name": "Veterinaria",
+    "folders": [],
+    "requests": [
+      {
+        "v": "11",
+        "endpoint": "http://localhost:8080/mascotas/1",
+        "name": "get_mascotas_byId",
+        "params": [],
+        "headers": [],
+        "method": "GET",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "",
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "get_mascotas_all",
+        "method": "GET",
+        "endpoint": "http://localhost:8080/mascotas",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": [],
+        "responses": {
+          "get_mascotas": {
+            "status": "OK",
+            "code": 200,
+            "headers": [
+              {
+                "key": "X-Powered-By",
+                "value": "Express"
+              },
+              {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Content-Length",
+                "value": "97"
+              },
+              {
+                "key": "ETag",
+                "value": "W/\"61-fIUPcJOCp1+rhU+5KgFldcyhGv8\""
+              },
+              {
+                "key": "Date",
+                "value": "Sat, 01 Feb 2025 10:54:15 GMT"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Keep-Alive",
+                "value": "timeout=5"
+              }
+            ],
+            "body": "[{\"id\":1,\"nombre\":\"pulguitas\",\"edad\":3,\"especie\":\"dog\",\"id_propietario\":1,\"propietario\":\"pedro\"}]",
+            "name": "get_mascotas",
+            "originalRequest": {
+              "v": "3",
+              "method": "GET",
+              "endpoint": "http://localhost:8080/mascotas",
+              "headers": [],
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "auth": {
+                "authType": "none",
+                "authActive": true
+              },
+              "params": [],
+              "name": "get_mascotas",
+              "requestVariables": []
+            }
+          }
+        }
+      },
+      {
+        "v": "11",
+        "name": "post_mascotas",
+        "method": "POST",
+        "endpoint": "http://localhost:8080/mascotas",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 3,\n    \"nombre\": \"jerry\",\n    \"edad\": 4,\n    \"especie\": \"monkey\",\n    \"id_propietario\": 3,\n    \"propietario\": \"Richard\"\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "put_mascota",
+        "method": "PUT",
+        "endpoint": "http://localhost:8080/mascotas/3",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 3,\n    \"nombre\": \"jerry\",\n    \"edad\": 4,\n    \"especie\": \"mouse\",\n    \"id_propietario\": 3,\n    \"propietario\": \"Richard\"\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "delete_mascota",
+        "method": "DELETE",
+        "endpoint": "http://localhost:8080/mascotas/3",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 3,\n    \"nombre\": \"jerry\",\n    \"edad\": 4,\n    \"especie\": \"mouse\",\n    \"id_propietario\": 3,\n    \"propietario\": \"Richard\"\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "get_citas_all",
+        "method": "GET",
+        "endpoint": "http://localhost:8080/citas/1",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 3,\n    \"nombre\": \"jerry\",\n    \"edad\": 4,\n    \"especie\": \"mouse\",\n    \"id_propietario\": 3,\n    \"propietario\": \"Richard\"\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "get_citas_byId",
+        "method": "GET",
+        "endpoint": "http://localhost:8080/citas/1",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 3,\n    \"nombre\": \"jerry\",\n    \"edad\": 4,\n    \"especie\": \"mouse\",\n    \"id_propietario\": 3,\n    \"propietario\": \"Richard\"\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "post_citas",
+        "method": "POST",
+        "endpoint": "http://localhost:8080/citas",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 5,\n    \"fecha\": \"09-12-2025\",\n    \"motivo\": \"heart attack\",\n    \"id_mascota\": 1,\n    \"id_veterinario\": 1,\n    \"hora\": 14\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "put_citas",
+        "method": "PUT",
+        "endpoint": "http://localhost:8080/citas/5",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 5,\n    \"fecha\": \"09-12-2025\",\n    \"motivo\": \"heart attack\",\n    \"id_mascota\": 1,\n    \"id_veterinario\": 1,\n    \"hora\": 17\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "delete_citas",
+        "method": "DELETE",
+        "endpoint": "http://localhost:8080/citas/5",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 5,\n    \"fecha\": \"09-12-2025\",\n    \"motivo\": \"heart attack\",\n    \"id_mascota\": 1,\n    \"id_veterinario\": 1,\n    \"hora\": 17\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "11",
+        "name": "prueba_express",
+        "method": "POST",
+        "endpoint": "http://localhost:8080/mascotas",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "\n  {\n    \"id\": 7,\n    \"nombre\": \"\",\n    \"edad\": 4,\n    \"especie\": \"monkey\",\n    \"id_propietario\": 3,\n    \"propietario\": \"Richard\"\n  }\n"
+        },
+        "requestVariables": [],
+        "responses": {}
+      }
+    ],
+    "headers": [],
+    "auth": {
+      "authType": "none",
+      "authActive": true
+    },
+    "_ref_id": "coll_m6m2rh7x_e37c1df6-becf-47d4-80b5-f2862927420f"
+  }
+]

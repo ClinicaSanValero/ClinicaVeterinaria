@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Citas</title>
+    <link rel="stylesheet" href="registrocitas.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://dynamic.brandcrowd.com/asset/logo/daed4ce7-84c5-43ea-809b-46bb035b7a5c/logo-search-grid-1x?logoTemplateVersion=4&v=638368790663100000&text=veterinary" alt="Logo Veterinaria" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li class="botones"><a class="linkNavegacion" href="mascotas.html">List of Pets</a></li>
+                <li class="botones"><a class="linkNavegacion" href="registromascotas.html">Pet Registration</a></li>
+                <li class="botones"><a class="linkNavegacion" href="citas.html">List of Appointments</a></li>
+                <li class="botones"><a class="linkNavegacion" href="registrocitas.html">Appointments registration</a></li>
+                <li class="botones"><a class="linkNavegacion" href="veterinarios.html">Veterinarians</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Register a new Appointment</h1>
+            <p>To book an appointment for your pet, complete the form below.</p>
+        </section>
+
+        <div class="container">
+            <form id="appointment-form">
+                <label for="fecha">Date:</label>
+                <input type="date" id="fechaCita" name="fecha" required>
+
+                <label for="motivo">Reason:</label>
+                <input type="text" id="motivoCita" name="motivo" required>
+
+                <label for="mascota">Pet:</label>
+                <input type="text" id="mascotaCita" name="mascota" required>
+
+                <label for="veterinario">Veterinarian:</label>
+                <input type="text" id="veterinarioCita" name="veterinario" required>
+
+                <button type="button" onclick="addAppointment()">Save</button>
+                <button type="button" onclick="resetForm()">Clean</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Veterinary Clinic - All rights reserved</p>
+    </footer>
+
+    <!-- Imágenes de huellas -->
+    <div class="side-images">
+        <img src="https://static.vecteezy.com/system/resources/previews/013/317/235/original/set-of-animal-paw-print-dog-or-cat-footprint-icon-illustration-paw-prints-icon-paw-dog-puppy-cat-bear-wolf-legs-foot-prints-free-vector.jpg" alt="Huella izquierda" class="paw-image left">
+        <img src="https://static.vecteezy.com/system/resources/previews/013/317/235/original/set-of-animal-paw-print-dog-or-cat-footprint-icon-illustration-paw-prints-icon-paw-dog-puppy-cat-bear-wolf-legs-foot-prints-free-vector.jpg" alt="Huella derecha" class="paw-image right">
+    </div>
+</body>
+</html>

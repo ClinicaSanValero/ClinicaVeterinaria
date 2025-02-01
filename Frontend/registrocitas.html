@@ -15,8 +15,8 @@
             <ul>
                 <li class="botones"><a class="linkNavegacion" href="mascotas.html">List of Pets</a></li>
                 <li class="botones"><a class="linkNavegacion" href="registromascotas.html">Pet Registration</a></li>
-                <li class="botones"><a class="linkNavegacion" href="citas.html">List of Dates</a></li>
-                <li class="botones"><a class="linkNavegacion" href="registrocitas.html">Appointments</a></li>
+                <li class="botones"><a class="linkNavegacion" href="citas.html">List of Appointments</a></li>
+                <li class="botones"><a class="linkNavegacion" href="registrocitas.html">Appointments registration</a></li>
                 <li class="botones"><a class="linkNavegacion" href="veterinarios.html">Veterinarians</a></li>
             </ul>
         </nav>
@@ -24,32 +24,32 @@
 
     <main>
         <section class="intro">
-            <h1>Registrar una Cita</h1>
-            <p>Para registrar una cita para tu mascota, completa el formulario a continuación.</p>
+            <h1>Register a new Appointment</h1>
+            <p>To book an appointment for your pet, complete the form below.</p>
         </section>
 
         <div class="container">
             <form id="appointment-form">
-                <label for="fecha">Fecha:</label>
+                <label for="fecha">Date:</label>
                 <input type="date" id="fechaCita" name="fecha" required>
 
-                <label for="motivo">Motivo:</label>
+                <label for="motivo">Reason:</label>
                 <input type="text" id="motivoCita" name="motivo" required>
 
-                <label for="mascota">Mascota:</label>
+                <label for="mascota">Pet:</label>
                 <input type="text" id="mascotaCita" name="mascota" required>
 
-                <label for="veterinario">Veterinario:</label>
+                <label for="veterinario">Veterinarian:</label>
                 <input type="text" id="veterinarioCita" name="veterinario" required>
 
-                <button type="button" onclick="addAppointment()">Guardar</button>
-                <button type="button" onclick="resetForm()">Limpiar</button>
+                <button type="button" onclick="addAppointment()">Save</button>
+                <button type="button" onclick="resetForm()">Clean</button>
             </form>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Clínica Veterinaria - Todos los derechos reservados</p>
+        <p>&copy; 2025 Veterinary Clinic - All rights reserved</p>
     </footer>
 
     <!-- Imágenes de huellas -->

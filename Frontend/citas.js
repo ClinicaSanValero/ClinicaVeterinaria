@@ -2,56 +2,52 @@ import axios from 'axios';
 import { el, icon, notifyOk, notifyError } from './documentsUtil.js';
 
 window.leerCitas = function () {
+    console.log('Citas cargadas');
     axios.get('http://localhost:8080/citas')
         .then((response) => {
             const listaCitas = response.data;
-            const tablaCitas = el('tableBody');
-            tablaCitas.innerHTML = ''; // Limpiar tabla antes de agregar filas nuevas
+            const tablaCitas = document.getElementById('tableBody');
+            tablaCitas.innerHTML = ''; // Limpiar tabla antes de agregar nuevas filas
 
             listaCitas.forEach(cita => {
-                const fila = document.createElement('tr');
-                fila.id = 'cita-' + cita.id;
-                
-                const celdaFecha = document.createElement('td');
-                celdaFecha.textContent = cita.fecha;
-                
-                const celdaHora = document.createElement('td');
-                celdaHora.textContent = cita.hora;
-                
-                const celdaMascota = document.createElement('td');
-                celdaMascota.textContent = cita.mascota;
-                
-                const botonEditar = document.createElement('button');
-                botonEditar.textContent = 'Editar';
-                botonEditar.onclick = () => actualizarFormularioCita(cita.id);
-                
-                const botonEliminar = document.createElement('button');
-                botonEliminar.textContent = 'Eliminar';
-                botonEliminar.onclick = () => eliminarCita(cita.id);
-                
-                const celdaAcciones = document.createElement('td');
-                celdaAcciones.appendChild(botonEditar);
-                celdaAcciones.appendChild(botonEliminar);
-                
-                fila.append(celdaFecha, celdaHora, celdaMascota, celdaAcciones);
-                tablaCitas.appendChild(fila);
+                tablaCitas.innerHTML += `
+                    <tr id="cita-${cita.id}">
+                        <td>${cita.fecha}</td>
+                        <td>${cita.hora}</td>
+                        <td>${cita.motivo}</td>
+                        <td>${cita.id_mascota}</td>
+                        <td>${cita.id_veterinario}</td>
+                        <td>
+                            <button onclick="actualizarFormularioCita(${cita.id})">Editar</button>
+                            <button onclick="eliminarCita(${cita.id})">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
             });
         })
-        .catch(() => notifyError('Error loading appointments'));
+        .catch(() => alert('Error al cargar las citas.'));
 };
 
+
+
 window.eliminarCita = function (id) {
-    if (confirm('Are you sure you want to delete this appointment?')) {
-        axios.delete(`http://localhost:8080/citas/${id}`)
+    if (confirm('¿Está seguro de que desea eliminar esta cita?')) {
+        axios.delete('http://localhost:8080/citas/' + id)
             .then((response) => {
-                if (response.status === 200) {
-                    notifyOk('Appointment successfully deleted');
+                if (response.status == 200) { // 200 si la cita se elimina correctamente
+                    notifyOk('Cita eliminada correctamente');
                     el('cita-' + id).remove();
                 }
             })
-            .catch(() => notifyError('Error deleting the appointment'));
+            .catch((error) => {
+                console.error('Error al eliminar la cita:', error); // Log del error en caso de fallo
+                notifyError('Error al eliminar la cita');
+            });
     }
 };
+
+
+
 
 window.actualizarFormularioCita = function (id) {
     axios.get(`http://localhost:8080/citas/${id}`).then((response) => {

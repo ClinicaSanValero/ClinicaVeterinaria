@@ -2,43 +2,31 @@ import axios from 'axios';
 import { el, icon, notifyOk, notifyError } from './documentsUtil.js';
 
 window.leerMascotas = function () {
+    console.log('Mascotas cargadas');
     axios.get('http://localhost:8080/mascotas')
         .then((response) => {
             const listaMascotas = response.data;
-            const tablaMascotas = el('tableBody');
-            tablaMascotas.innerHTML = '';
+            const tablaMascotas = document.getElementById('tableBody');
+            tablaMascotas.innerHTML = ''; // Limpiar tabla antes de agregar nuevas filas
 
             listaMascotas.forEach(mascota => {
-                const fila = document.createElement('tr');
-                fila.id = 'mascota-' + mascota.id;
-                
-                const celdaNombre = document.createElement('td');
-                celdaNombre.textContent = mascota.nombre;
-                
-                const celdaEdad = document.createElement('td');
-                celdaEdad.textContent = mascota.edad;
-                
-                const celdaRaza = document.createElement('td');
-                celdaRaza.textContent = mascota.raza;
-                
-                const botonEditar = document.createElement('button');
-                botonEditar.textContent = 'Editar';
-                botonEditar.onclick = () => actualizarFormularioMascota(mascota.id);
-                
-                const botonEliminar = document.createElement('button');
-                botonEliminar.textContent = 'Eliminar';
-                botonEliminar.onclick = () => eliminarMascota(mascota.id);
-                
-                const celdaAcciones = document.createElement('td');
-                celdaAcciones.appendChild(botonEditar);
-                celdaAcciones.appendChild(botonEliminar);
-                
-                fila.append(celdaNombre, celdaEdad, celdaRaza, celdaAcciones);
-                tablaMascotas.appendChild(fila);
+                tablaMascotas.innerHTML += `
+                    <tr id="mascota-${mascota.id}">
+                        <td>${mascota.nombre}</td>
+                        <td>${mascota.edad}</td>
+                        <td>${mascota.especie}</td>
+                        <td>${mascota.propietario}</td>
+                        <td>
+                            <button onclick="actualizarFormularioMascota(${mascota.id})">Editar</button>
+                            <button onclick="eliminarMascota(${mascota.id})">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
             });
         })
-        .catch(() => notifyError('Error loading pets'));
+        .catch(() => alert('Error al cargar las mascotas.'));
 };
+
 
 window.eliminarMascota = function (id) {
     if (confirm('Are you sure you want to delete this pet?')) {

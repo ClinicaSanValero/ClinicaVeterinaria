@@ -22,10 +22,7 @@ window.addPet = function () {
         return;
     }
 
-    if (propietario === '') {
-        notifyError('Owner is a required field');
-        return;
-    }
+    
 
     axios.post('http://localhost:8080/mascotas', {
         nombre: nombre,

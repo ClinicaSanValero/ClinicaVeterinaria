@@ -26,12 +26,29 @@ header .logo img {
   height: auto;
 }
 
-.barraNavegacion {
+nav ul {
   justify-content: center;
   margin: 0;
   padding: 0;
   list-style: outside;
   display: flex;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav li a {
+  color: #fff;
+  background-color: #388e3c;
+  border-radius: 4px;
+  padding: 8px 15px;
+  transition: background-color .3s;
+}
+
+nav li a:hover {
+  color: #333;
+  background-color: #ffcdad;
 }
 
 .botones {

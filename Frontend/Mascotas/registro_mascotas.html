@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Mascotas</title>
+    <link rel="stylesheet" href="Registro_mascotas.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://dynamic.brandcrowd.com/asset/logo/daed4ce7-84c5-43ea-809b-46bb035b7a5c/logo-search-grid-1x?logoTemplateVersion=4&v=638368790663100000&text=veterinary" alt="Logo Veterinaria" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="mascotas.html">Listado de Mascotas</a></li>
+                <li><a href="registro_mascotas.html">Registro de Mascotas</a></li>
+                <li><a href="citas.html">Listado de Citas</a></li>
+                <li><a href="registro_citas.html">Registro de Citas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Registrar una Mascota</h1>
+            <p>Para registrar una mascota, completa el formulario a continuación.</p>
+        </section>
+
+        <div class="container">
+            <form id="pet-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombreMascota" name="nombre" required>
+
+                <label for="especie">Especie:</label>
+                <input type="text" id="especieMascota" name="especie" required>
+
+                <label for="raza">Raza:</label>
+                <input type="text" id="edadMascota" name="edad" required>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="propietarioMascota" name="propietario" required>
+
+                <button type="button" onclick="addPet()">Guardar</button>
+                <button type="button" onclick="resetForm()">Limpiar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Clínica Veterinaria - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Imágenes de huellas -->
+    <div class="side-images">
+        <img src="https://static.vecteezy.com/system/resources/previews/013/317/235/original/set-of-animal-paw-print-dog-or-cat-footprint-icon-illustration-paw-prints-icon-paw-dog-puppy-cat-bear-wolf-legs-foot-prints-free-vector.jpg" alt="Huella izquierda" class="paw-image left">
+        <img src="https://static.vecteezy.com/system/resources/previews/013/317/235/original/set-of-animal-paw-print-dog-or-cat-footprint-icon-illustration-paw-prints-icon-paw-dog-puppy-cat-bear-wolf-legs-foot-prints-free-vector.jpg" alt="Huella derecha" class="paw-image right">
+    </div>
+</body>
+</html>

@@ -596,38 +596,53 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"kIu8H":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _documentsUtilJs = require("./documentsUtil.js");
 window.addAppointment = function() {
-    const fecha = (0, _documentsUtilJs.el)('fechaCita').value;
-    const hora = (0, _documentsUtilJs.el)('hora').value;
-    const mascota = (0, _documentsUtilJs.el)('mascotaCita').value;
+    const fecha = el('fechaCita').value;
+    const hora = el('hora').value;
+    const mascota = el('mascotaCita').value;
+    const veterinario = el('veterinarioCita').value; // Recoger el valor del veterinario
+    // Validación de los campos
     if (fecha === '') {
-        (0, _documentsUtilJs.notifyError)('Date is a required field');
+        notifyError('Date is a required field');
         return;
     }
-    (0, _axiosDefault.default).post('http://localhost:8080/citas', {
-        fecha: fecha,
+    if (hora === '') {
+        notifyError('Time is a required field');
+        return;
+    }
+    if (mascota === '') {
+        notifyError('Pet name is a required field');
+        return;
+    }
+    if (veterinario === '') {
+        notifyError('Veterinarian is a required field');
+        return;
+    }
+    // Enviar los datos del formulario a la API
+    axios.post('http://localhost:8080/citas', {
+        fechaCita: fecha,
         hora: hora,
-        mascota: mascota
+        mascotaCita: mascota,
+        veterinarioCita: veterinario // Ahora enviamos también el veterinario
     }).then((response)=>{
-        (0, _documentsUtilJs.notifyOk)('Appointment registered');
-        (0, _documentsUtilJs.el)('fechaReg').value = '';
-        (0, _documentsUtilJs.el)('horaReg').value = '';
-        (0, _documentsUtilJs.el)('mascotaCita').value = '';
+        notifyOk('Appointment registered');
+        // Limpiar el formulario después de registrar la cita
+        el('fechaCita').value = '';
+        el('hora').value = '';
+        el('mascotaCita').value = '';
+        el('veterinarioCita').value = ''; // Limpiar el campo veterinario también
     }).catch((error)=>{
-        (0, _documentsUtilJs.notifyError)('Error registering appointment');
+        notifyError('Error registering appointment');
     });
 };
 window.resetForm = function() {
-    (0, _documentsUtilJs.el)('fechaCita').value = '';
-    (0, _documentsUtilJs.el)('hora').value = '';
-    (0, _documentsUtilJs.el)('veterinario').value = '';
-    (0, _documentsUtilJs.notifyOk)('Form cleared');
+    el('fechaCita').value = '';
+    el('hora').value = '';
+    el('mascotaCita').value = '';
+    el('veterinarioCita').value = ''; // Limpiar también el veterinario
+    notifyOk('Form cleared');
 };
 
-},{"axios":"jo6P5","./documentsUtil.js":"4ohqe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["bF4Vc","kIu8H"], "kIu8H", "parcelRequire94c2")
+},{}]},["bF4Vc","kIu8H"], "kIu8H", "parcelRequire94c2")
 
 //# sourceMappingURL=registrocitas.278b408b.js.map
